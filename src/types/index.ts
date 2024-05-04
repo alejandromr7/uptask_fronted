@@ -13,3 +13,13 @@ export type Project = z.infer<typeof ProjectSchema>;
 
 export type ProjectFormData = Pick<Project, 'projectName' | 'clientName' | 'description'>;
 
+export const DashboardProjectSchema = z.array(
+    ProjectSchema.pick(
+        {
+            id: true,
+            projectName: true,
+            clientName: true,
+            description: true
+        }
+    )
+) 
