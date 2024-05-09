@@ -25,7 +25,8 @@ export const DashboardProjectSchema = z.array(
 )
 
 
-type TaskStatus = "pending" | "onHold" | "inProgress" | "underReview" | "completed";
+type taskStatusSchema = "pending" | "onHold" | "inProgress" | "underReview" | "completed";
+export type TaskStatus = z.infer<typeof taskStatusSchema>;
 
 export const taskStatusSchema = z.enum(["pending", "onHold", "inProgress", "underReview", "completed"]);
 export const TaskSchema = z.object({
