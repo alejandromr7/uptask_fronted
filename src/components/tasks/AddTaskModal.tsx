@@ -24,7 +24,6 @@ export default function AddTaskModal() {
         description: ''
     }
 
-
     const { register, handleSubmit, formState: { errors }, reset } = useForm({ defaultValues: initialValues });
 
     const queryClient = useQueryClient();
@@ -35,7 +34,7 @@ export default function AddTaskModal() {
             toast.error(error.message);
         },
         onSuccess: (data) => {
-            queryClient.invalidateQueries({ queryKey: ['getProject'] });
+            queryClient.invalidateQueries({ queryKey: ['getProject', projectId] });
             toast.success(data);
             reset();
             navigate(location.pathname, { replace: true });
